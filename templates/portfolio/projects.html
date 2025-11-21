@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Projects | Sabihul Hasan{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h2 class="mb-5 text-center">Featured Projects</h2>
+
+    <div class="row g-4">
+        {% for project in projects %}
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100">
+                {% if project.image %}
+                <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }}"
+                    style="height: 200px; object-fit: cover; opacity: 0.8;">
+                {% else %}
+                <div class="project-placeholder">
+                    <div class="project-placeholder-icon">
+                        &lt;/&gt;
+                    </div>
+                </div>
+                {% endif %}
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ project.title }}</h5>
+                    <p class="card-text small mb-2 text-metallic-stack">{{ project.tech_stack }}</p>
+                    <p class="card-text flex-grow-1">{{ project.description|truncatewords:30 }}</p>
+                    <a href="{{ project.github_link }}" target="_blank" class="btn btn-sm btn-metallic mt-3">View
+                        Code</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center">
+            <p class="text-muted">No projects added yet. Check back soon!</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
