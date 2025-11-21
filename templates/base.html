@@ -36,6 +36,8 @@
                     <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'projects' %}">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link"
+                            href="{% static 'resume/Sabihul_Hasan_Jamia_MCA_Resume.pdf' %}" download>Resume</a></li>
                 </ul>
             </div>
         </div>
@@ -60,7 +62,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p class="mb-0">&copy; {% now "Y" %} Sabihul Hasan. Built with Django & Bootstrap.</p>
+            <p class="mb-0">&copy; {% now "Y" %} Sabihul Hasan.</p>
         </div>
     </footer>
 

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Projects | Sabihul Hasan{% endblock %}
 
@@ -7,33 +8,94 @@
     <h2 class="mb-5 text-center">Featured Projects</h2>
 
     <div class="row g-4">
-        {% for project in projects %}
-        <div class="col-md-6 col-lg-4">
+        <!-- Project 1: Posts API -->
+        <div class="col-md-6 col-lg-6">
             <div class="card h-100">
-                {% if project.image %}
-                <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }}"
-                    style="height: 200px; object-fit: cover; opacity: 0.8;">
-                {% else %}
                 <div class="project-placeholder">
                     <div class="project-placeholder-icon">
-                        &lt;/&gt;
+                        API
                     </div>
                 </div>
-                {% endif %}
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">{{ project.title }}</h5>
-                    <p class="card-text small mb-2 text-metallic-stack">{{ project.tech_stack }}</p>
-                    <p class="card-text flex-grow-1">{{ project.description|truncatewords:30 }}</p>
-                    <a href="{{ project.github_link }}" target="_blank" class="btn btn-sm btn-metallic mt-3">View
+                    <h5 class="card-title">Posts API</h5>
+                    <p class="card-text small mb-2 text-metallic-stack">FastAPI • PostgreSQL • SQLAlchemy • Docker •
+                        CI/CD</p>
+                    <p class="card-text flex-grow-1">
+                        Built a robust RESTful API with JWT authentication and role-based access. Implemented automated
+                        testing with pytest and set up a complete CI/CD pipeline using GitHub Actions for seamless
+                        deployment on Railway.
+                    </p>
+                    <a href="https://github.com/hasanSabi/social_fastapi" class="btn btn-sm btn-metallic mt-3">View
                         Code</a>
                 </div>
             </div>
         </div>
-        {% empty %}
-        <div class="col-12 text-center">
-            <p class="text-muted">No projects added yet. Check back soon!</p>
+
+        <!-- Project 2: Microservices Architecture -->
+        <div class="col-md-6 col-lg-6">
+            <div class="card h-100">
+                <div class="project-placeholder">
+                    <div class="project-placeholder-icon">
+                        µS
+                    </div>
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Microservices Architecture</h5>
+                    <p class="card-text small mb-2 text-metallic-stack">Python • Kubernetes • RabbitMQ • Docker • MySQL
+                    </p>
+                    <p class="card-text flex-grow-1">
+                        Designed a distributed system with API Gateway, Auth, Converter, and Notification services.
+                        Orchestrated using Kubernetes for scalability and fault tolerance, utilizing RabbitMQ for
+                        asynchronous inter-service communication.
+                    </p>
+                    <a href="https://github.com/hasanSabi/microservices-converter"
+                        class="btn btn-sm btn-metallic mt-3">View Code</a>
+                </div>
+            </div>
         </div>
-        {% endfor %}
+
+        <!-- Project 3: Network Verification -->
+        <div class="col-md-6 col-lg-6">
+            <div class="card h-100">
+                <div class="project-placeholder">
+                    <div class="project-placeholder-icon">
+                        NET
+                    </div>
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Network Verification</h5>
+                    <p class="card-text small mb-2 text-metallic-stack">Python • Mininet • pytest • GitHub Actions</p>
+                    <p class="card-text flex-grow-1">
+                        Simulated complex network topologies (tree, linear) using Mininet. Developed automated Python
+                        scripts to verify connectivity, throughput, and packet loss, integrated into a CI/CD pipeline
+                        for continuous testing.
+                    </p>
+                    <a href="https://github.com/hasanSabi/network-verification"
+                        class="btn btn-sm btn-metallic mt-3">View Code</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 4: College Management System -->
+        <div class="col-md-6 col-lg-6">
+            <div class="card h-100">
+                <div class="project-placeholder">
+                    <div class="project-placeholder-icon">
+                        CMS
+                    </div>
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">College Management System</h5>
+                    <p class="card-text small mb-2 text-metallic-stack">Django • MySQL • HTML • CSS</p>
+                    <p class="card-text flex-grow-1">
+                        Developed a comprehensive web-based system for managing student attendance, results, and
+                        information. implemented role-based access control and secure data handling using Django's
+                        robust backend capabilities.
+                    </p>
+                    <a href="#" class="btn btn-sm btn-metallic mt-3">View Code</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

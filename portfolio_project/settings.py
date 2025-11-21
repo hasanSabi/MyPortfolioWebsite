@@ -43,10 +43,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-ldhp=am1lze20r!+*v7^mf!m+3%hqt+d^igiovz(6&t0m1%0wa'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+import os
 
-ALLOWED_HOSTS = ['*']
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = 'RENDER' not in os.environ
+
+ALLOWED_HOSTS = []
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+else:
+    ALLOWED_HOSTS.append('*')
 
 
 # Application definition
@@ -141,6 +148,9 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+if not DEBUG:
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
